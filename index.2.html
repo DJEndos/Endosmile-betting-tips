@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endosmile Tips - Smart Betting Predictions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #003554;
+            --secondary: #00A6FB;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+        }
+        
+        .sidebar {
+            transition: all 0.3s ease;
+        }
+        
+        .prediction-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                position: fixed;
+                z-index: 50;
+                height: 100vh;
+            }
+            
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            
+            .overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 40;
+            }
+            
+            .overlay.active {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation Bar -->
+    <nav class="bg-[#003554] text-[#00A6FB] shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-4">
+                    <button id="sidebarToggle" class="md:hidden text-xl">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <a href="#" class="flex items-center space-x-2">
+                        <i class="fas fa-chart-line text-2xl"></i>
+                        <span class="font-bold text-xl">Endosmile Tips</span>
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="hover:text-white transition">Home</a>
+                    <a href="#" class="hover:text-white transition">Predictions</a>
+                    <a href="#" class="hover:text-white transition">Live Tips</a>
+                    <a href="#" class="hover:text-white transition">Subscription</a>
+                    <a href="#" class="hover:text-white transition">About</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button class="bg-[#00A6FB] hover:bg-blue-600 text-white px-4 py-2 rounded-md transition">
+                        <i class="fas fa-user mr-2"></i>Login
+                    </button>
+                    <button class="hidden md:block bg-[#00A6FB] hover:bg-blue-600 text-white px-4 py-2 rounded-md transition">
+                        Subscribe
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Overlay for mobile sidebar -->
+    <div id="overlay" class="overlay"></div>
+    
+    <!-- Main Content -->
+    <div class="flex">
+        <!-- Sidebar -->
+        <aside class="sidebar w-64 bg-white shadow-md p-4">
+            <div class="mb-8">
+                <h3 class="text-lg font-semibold text-gray-700 mb-4">Menu</h3>
+                <ul class="space-y-2">
+                    <li>
+                        <a href="#" class="flex items-center space-x-2 p-2 rounded hover:bg-gray-100 text-gray-700 hover:text-[#00A6FB]">
+                            <i class="fas fa-home w-6"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center space-x-2 p-2 rounded hover:bg-gray-100 text-gray-700 hover:text-[#00A6FB]">
+                            <i class="fas fa-futbol w-6"></i>
+                            <span>Today's Predictions</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center space-x-2 p-2 rounded hover:bg-gray-100 text-gray-700 hover:text-[#00A6FB]">
+                            <i class="fas fa-bolt w-6"></i>
+                            <span>Live Tips</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center space-x-2 p-2 rounded hover:bg-gray-100 text-gray-700 hover:text-[#00A6FB]">
+                            <i class="fas fa-calendar-alt w-6"></i>
+                            <span>Weekly Picks</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center space-x-2 p-2 rounded hover:bg-gray-100 text-gray-700 hover:text-[#00A6FB]">
+                            <i class="fas fa-chart-pie w-6"></i>
+                            <span>Statistics</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center space-x-2 p-2 rounded hover:bg-gray-100 text-gray-700 hover:text-[#00A6FB]">
+                            <i class="fas fa-crown w-6"></i>
+                            <span>VIP Packages</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3 class="text-lg font-semibold text-gray-700 mb-4">Sports</h3>
+                <ul class="space-y-2">
+                    <li>
+                        <a href="#" class="flex items-center space-x-2 p-2 rounded hover:bg-gray-100 text-gray-700 hover:text-[#00A6FB]">
+                            <i class="fas fa-futbol w-6"></i>
+                            <span>Football</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center space-x-2 p-2 rounded hover:bg-gray-100 text-gray-700 hover:text-[#00A6FB]">
+                            <i class="fas fa-basketball-ball w-6"></i>
+                            <span>Basketball</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center space-x-2 p-2 rounded hover:bg-gray-100 text-gray-700 hover:text-[#00A6FB]">
+                            <i class="fas fa-baseball-ball w-6"></i>
+                            <span>Baseball</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center space-x-2 p-2 rounded hover:bg-gray-100 text-gray-700 hover:text-[#00A6FB]">
+                            <i class="fas fa-table-tennis w-6"></i>
+                            <span>Tennis</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+        
+        <!-- Main Content Area -->
+        <main class="flex-1 p-6">
+            <!-- Header Section -->
+            <div class="bg-white rounded-lg shadow p-6 mb-6">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">Welcome to Endosmile Tips</h1>
+                        <p class="text-gray-600">Your trusted source for accurate betting predictions</p>
+                    </div>
+                    <div class="mt-4 md:mt-0">
+                        <div class="relative">
+                            <input type="text" placeholder="Search predictions..." class="pl-10 pr-4 py-2 border rounded-lg w-full md:w-64 focus:outline-none focus:ring-2 focus:ring-[#00A6FB]">
+                            <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Stats Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                <div class="bg-white rounded-lg shadow p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-500">Today's Predictions</p>
+                            <h3 class="text-2xl font-bold text-gray-800">24</h3>
+                        </div>
+                        <div class="bg-blue-100 p-3 rounded-full">
+                            <i class="fas fa-futbol text-blue-600 text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <span class="text-green-500 text-sm font-medium"><i class="fas fa-arrow-up mr-1"></i> 12.5%</span>
+                        <span class="text-gray-500 text-sm ml-2">From yesterday</span>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-500">Win Rate</p>
+                            <h3 class="text-2xl font-bold text-gray-800">87%</h3>
+                        </div>
+                        <div class="bg-green-100 p-3 rounded-full">
+                            <i class="fas fa-trophy text-green-600 text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <span class="text-green-500 text-sm font-medium"><i class="fas fa-arrow-up mr-1"></i> 2.3%</span>
+                        <span class="text-gray-500 text-sm ml-2">Last 7 days</span>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-500">Live Tips</p>
+                            <h3 class="text-2xl font-bold text-gray-800">8</h3>
+                        </div>
+                        <div class="bg-red-100 p-3 rounded-full">
+                            <i class="fas fa-bolt text-red-600 text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <span class="text-green-500 text-sm font-medium"><i class="fas fa-arrow-up mr-1"></i> 3.1%</span>
+                        <span class="text-gray-500 text-sm ml-2">From yesterday</span>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-500">VIP Members</p>
+                            <h3 class="text-2xl font-bold text-gray-800">1,254</h3>
+                        </div>
+                        <div class="bg-purple-100 p-3 rounded-full">
+                            <i class="fas fa-crown text-purple-600 text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <span class="text-green-500 text-sm font-medium"><i class="fas fa-arrow-up mr-1"></i> 8.7%</span>
+                        <span class="text-gray-500 text-sm ml-2">Last month</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Live Predictions Section -->
+            <div class="bg-white rounded-lg shadow p-6 mb-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-xl font-bold text-gray-800">Live Predictions</h2>
+                    <div class="flex items-center space-x-2">
+                        <span class="h-3 w-3 bg-red-500 rounded-full animate-pulse"></span>
+                        <span class="text-sm text-gray-600">Live Updates</span>
+                    </div>
+                </div>
+                
+                <div id="livePredictions" class="space-y-4">
+                    <!-- Predictions will be loaded here via JavaScript -->
+                </div>
+                
+                <div class="mt-6 text-center">
+                    <button id="loadMore" class="bg-[#00A6FB] hover:bg-blue-600 text-white px-6 py-2 rounded-md transition">
+                        Load More Predictions
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Today's Top Picks -->
+            <div class="bg-white rounded-lg shadow p-6 mb-6">
+                <h2 class="text-xl font-bold text-gray-800 mb-6">Today's Top Picks</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="prediction-card bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
+                        <div class="p-4">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Football</span>
+                                <span class="text-xs text-gray-500">16:30 | 17/05/2025</span>
+                            </div>
+                            <div class="flex justify-between items-center mb-4">
+                                <div class="text-center">
+                                    <img src="data:image/png;base64,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" alt="Team 1" class="w-20 h-15 mx-auto mb-1 rounded">
+                                    <span class="text-sm font-medium">Borussia Dortmunt</span>
+                                </div>
+                                <div class="text-center px-2">
+                                    <span class="text-xs text-gray-500">Premier League</span>
+                                    <div class="text-xl font-bold my-1"> - </div>
+                                    <span class="text-xs bg-blue-100 text-blue-800 px-2 py-0.5 rounded">HT</span>
+                                </div>
+                                <div class="text-center">
+                                    <img src="data:image/jpeg;base64,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" alt="Team 2"  class="w-20 h-15 mx-auto mb-1 rounded">
+                                    <span class="text-sm font-medium">holstein kie</span>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm font-medium">Prediction:</span>
+                                <span class="bg-[#00A6FB] text-white text-xs font-medium px-2.5 py-0.5 rounded">Home Win</span>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-3 flex justify-between items-center">
+                            <span class="text-sm text-gray-600">Odds: 2.10</span>
+                            <button class="text-[#00A6FB] hover:text-blue-700 text-sm font-medium">
+                                <i class="fas fa-plus-circle mr-1"></i> Track
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="prediction-card bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
+                        <div class="p-4">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Basketball</span>
+                                <span class="text-xs text-gray-500">1 hour ago</span>
+                            </div>
+                            <div class="flex justify-between items-center mb-4">
+                                <div class="text-center">
+                                    <img src="https://via.placeholder.com/40" alt="Team 1" class="w-10 h-10 mx-auto mb-1 rounded-full">
+                                    <span class="text-sm font-medium">Lakers</span>
+                                </div>
+                                <div class="text-center px-2">
+                                    <span class="text-xs text-gray-500">NBA</span>
+                                    <div class="text-xl font-bold my-1">-</div>
+                                    <span class="text-xs bg-gray-100 text-gray-800 px-2 py-0.5 rounded">19:30</span>
+                                </div>
+                                <div class="text-center">
+                                    <img src="https://via.placeholder.com/40" alt="Team 2" class="w-10 h-10 mx-auto mb-1 rounded-full">
+                                    <span class="text-sm font-medium">Warriors</span>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm font-medium">Prediction:</span>
+                                <span class="bg-[#00A6FB] text-white text-xs font-medium px-2.5 py-0.5 rounded">Over 215.5</span>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-3 flex justify-between items-center">
+                            <span class="text-sm text-gray-600">Odds: 1.85</span>
+                            <button class="text-[#00A6FB] hover:text-blue-700 text-sm font-medium">
+                                <i class="fas fa-plus-circle mr-1"></i> Track
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="prediction-card bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
+                        <div class="p-4">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded">Tennis</span>
+                                <span class="text-xs text-gray-500">30 mins ago</span>
+                            </div>
+                            <div class="flex justify-between items-center mb-4">
+                                <div class="text-center">
+                                    <img src="https://via.placeholder.com/40" alt="Player 1" class="w-10 h-10 mx-auto mb-1 rounded-full">
+                                    <span class="text-sm font-medium">Djokovic</span>
+                                </div>
+                                <div class="text-center px-2">
+                                    <span class="text-xs text-gray-500">Wimbledon</span>
+                                    <div class="text-xl font-bold my-1">-</div>
+                                    <span class="text-xs bg-gray-100 text-gray-800 px-2 py-0.5 rounded">15:00</span>
+                                </div>
+                                <div class="text-center">
+                                    <img src="https://via.placeholder.com/40" alt="Player 2" class="w-10 h-10 mx-auto mb-1 rounded-full">
+                                    <span class="text-sm font-medium">Alcaraz</span>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm font-medium">Prediction:</span>
+                                <span class="bg-[#00A6FB] text-white text-xs font-medium px-2.5 py-0.5 rounded">2-0 Sets</span>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-3 flex justify-between items-center">
+                            <span class="text-sm text-gray-600">Odds: 2.75</span>
+                            <button class="text-[#00A6FB] hover:text-blue-700 text-sm font-medium">
+                                <i class="fas fa-plus-circle mr-1"></i> Track
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Performance Stats -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">Weekly Performance</h2>
+                    <div class="h-64">
+                        <canvas id="performanceChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">Success Rate by Sport</h2>
+                    <div class="h-64">
+                        <canvas id="sportChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Testimonials -->
+            <div class="bg-white rounded-lg shadow p-6 mb-6">
+                <h2 class="text-xl font-bold text-gray-800 mb-6">What Our Members Say</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <div class="flex items-center mb-4">
+                            <img src="https://via.placeholder.com/50" alt="User" class="w-10 h-10 rounded-full mr-3">
+                            <div>
+                                <h4 class="font-medium">John D.</h4>
+                                <div class="flex text-yellow-400 text-sm">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm">"Endosmile Tips has completely transformed my betting strategy. The predictions are accurate and the analysis is thorough. My profits have increased by 300% since subscribing!"</p>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <div class="flex items-center mb-4">
+                            <img src="https://via.placeholder.com/50" alt="User" class="w-10 h-10 rounded-full mr-3">
+                            <div>
+                                <h4 class="font-medium">Sarah M.</h4>
+                                <div class="flex text-yellow-400 text-sm">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm">"The live tips feature is incredible. I love getting real-time updates during matches. The team really knows their stuff and the VIP membership is worth every penny."</p>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <div class="flex items-center mb-4">
+                            <img src="https://via.placeholder.com/50" alt="User" class="w-10 h-10 rounded-full mr-3">
+                            <div>
+                                <h4 class="font-medium">Michael T.</h4>
+                                <div class="flex text-yellow-400 text-sm">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm">"After trying several prediction sites, Endosmile stands out for its consistency and transparency. The detailed stats and historical performance data give me confidence in every bet."</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="bg-[#003554] text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-[#00A6FB]">Endosmile Tips</h3>
+                    <p class="text-gray-300">Providing accurate betting predictions since 2015. Our team of experts delivers winning tips across multiple sports.</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4 text-[#00A6FB]">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Home</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Predictions</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Live Tips</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Subscription</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4 text-[#00A6FB]">Sports</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Football</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Basketball</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Tennis</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Baseball</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Hockey</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4 text-[#00A6FB]">Contact Us</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-gray-300"></i>
+                            <span class="text-gray-300">support@endosmile.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-2 text-gray-300"></i>
+                            <span class="text-gray-300">+1 (555) 123-4567</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 text-gray-300"></i>
+                            <span class="text-gray-300">123 Betting St, Las Vegas</span>
+                        </li>
+                    </ul>
+                    <div class="mt-4 flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white transition"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+                <p>&copy; 2023 Endosmile Tips. All rights reserved.</p>
+                <p class="mt-2 text-sm">Disclaimer: Betting involves risk. Please gamble responsibly.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Mobile sidebar toggle
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebar = document.querySelector('.sidebar');
+        const overlay = document.getElementById('overlay');
+        
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        });
+        
+        overlay.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+        
+        // Sample live predictions data
+        const livePredictions = [
+            {
+                id: 1,
+                sport: 'Football',
+                league: 'Premier League',
+                teams: ['Liverpool', 'Chelsea'],
+                prediction: 'Over 2.5 Goals',
+                odds: '1.85',
+                time: '5 mins ago',
+                status: 'live'
+            },
+            {
+                id: 2,
+                sport: 'Basketball',
+                league: 'NBA',
+                teams: ['Boston Celtics', 'Miami Heat'],
+                prediction: 'Away Win',
+                odds: '2.40',
+                time: '15 mins ago',
+                status: 'pre-match'
+            },
+            {
+                id: 3,
+                sport: 'Tennis',
+                league: 'ATP Tour',
+                teams: ['Nadal', 'Federer'],
+                prediction: 'Total Games Over 22.5',
+                odds: '1.95',
+                time: '25 mins ago',
+                status: 'pre-match'
+            },
+            {
+                id: 4,
+                sport: 'Football',
+                league: 'La Liga',
+                teams: ['Barcelona', 'Real Madrid'],
+                prediction: 'Both Teams to Score',
+                odds: '1.75',
+                time: '40 mins ago',
+                status: 'live'
+            }
+        ];
+        
+        // Function to render live predictions
+        function renderLivePredictions(predictions) {
+            const container = document.getElementById('livePredictions');
+            container.innerHTML = '';
+            
+            predictions.forEach(prediction => {
+                const predictionElement = document.createElement('div');
+                predictionElement.className = 'bg-gray-50 rounded-lg p-4 border border-gray-200';
+                
+                let statusBadge = '';
+                if (prediction.status === 'live') {
+                    statusBadge = '<span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded mr-2">LIVE</span>';
+                } else {
+                    statusBadge = '<span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded mr-2">PRE-MATCH</span>';
+                }
+                
+                predictionElement.innerHTML = `
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            ${statusBadge}
+                            <span class="text-xs text-gray-500">${prediction.time}</span>
+                        </div>
+                        <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">${prediction.sport}</span>
+                    </div>
+                    <div class="flex justify-between items-center mb-3">
+                        <div class="text-center">
+                            <span class="text-sm font-medium">${prediction.teams[0]}</span>
+                        </div>
+                        <div class="text-center px-4">
+                            <span class="text-xs text-gray-500">${prediction.league}</span>
+                            <div class="text-xl font-bold my-1">vs</div>
+                        </div>
+                        <div class="text-center">
+                            <span class="text-sm font-medium">${prediction.teams[1]}</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <span class="text-sm font-medium">Prediction:</span>
+                            <span class="ml-2 bg-[#00A6FB] text-white text-xs font-medium px-2.5 py-0.5 rounded">${prediction.prediction}</span>
+                        </div>
+                        <div>
+                            <span class="text-sm text-gray-600 mr-3">Odds: ${prediction.odds}</span>
+                            <button class="text-[#00A6FB] hover:text-blue-700 text-sm font-medium">
+                                <i class="fas fa-plus-circle mr-1"></i> Track
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                container.appendChild(predictionElement);
+            });
+        }
+        
+        // Initial render
+        renderLivePredictions(livePredictions);
+        
+        // Load more functionality
+        let currentPage = 1;
+        const loadMoreBtn = document.getElementById('loadMore');
+        
+        loadMoreBtn.addEventListener('click', () => {
+            // Simulate loading more data
+            currentPage++;
+            
+            // In a real app, this would be an API call
+            const morePredictions = [
+                {
+                    id: 5,
+                    sport: 'Football',
+                    league: 'Serie A',
+                    teams: ['Juventus', 'AC Milan'],
+                    prediction: 'Draw',
+                    odds: '3.20',
+                    time: '1 hour ago',
+                    status: 'pre-match'
+                },
+                {
+                    id: 6,
+                    sport: 'Basketball',
+                    league: 'Euroleague',
+                    teams: ['CSKA Moscow', 'Real Madrid'],
+                    prediction: 'Home Win',
+                    odds: '1.90',
+                    time: '1.5 hours ago',
+                    status: 'pre-match'
+                }
+            ];
+            
+            livePredictions.push(...morePredictions);
+            renderLivePredictions(livePredictions);
+            
+            if (currentPage >= 2) {
+                loadMoreBtn.disabled = true;
+                loadMoreBtn.textContent = 'No More Predictions';
+                loadMoreBtn.className = 'bg-gray-300 text-gray-600 px-6 py-2 rounded-md cursor-not-allowed';
+            }
+        });
+        
+        // Charts
+        // Weekly Performance Chart
+        const performanceCtx = document.getElementById('performanceChart').getContext('2d');
+        const performanceChart = new Chart(performanceCtx, {
+            type: 'line',
+            data: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                datasets: [{
+                    label: 'Win Rate %',
+                    data: [72, 85, 79, 88, 91, 83, 89],
+                    borderColor: '#00A6FB',
+                    backgroundColor: 'rgba(0, 166, 251, 0.1)',
+                    tension: 0.3,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 60,
+                        max: 100
+                    }
+                }
+            }
+        });
+        
+        // Sport Success Rate Chart
+        const sportCtx = document.getElementById('sportChart').getContext('2d');
+        const sportChart = new Chart(sportCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Football', 'Basketball', 'Tennis', 'Baseball', 'Hockey'],
+                datasets: [{
+                    label: 'Success Rate %',
+                    data: [87, 82, 79, 75, 71],
+                    backgroundColor: [
+                        'rgba(0, 166, 251, 0.7)',
+                        'rgba(54, 162, 235, 0.7)',
+                        'rgba(255, 206, 86, 0.7)',
+                        'rgba(75, 192, 192, 0.7)',
+                        'rgba(153, 102, 255, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(0, 166, 251, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        });
+        
+        // Simulate real-time updates
+        setInterval(() => {
+            // In a real app, this would be a WebSocket connection or API polling
+            const randomIndex = Math.floor(Math.random() * livePredictions.length);
+            const randomPrediction = livePredictions[randomIndex];
+            
+            if (randomPrediction.status === 'live') {
+                // Simulate score update
+                const scoreElement = document.querySelectorAll('.text-xl.font-bold.my-1')[randomIndex];
+                if (scoreElement && scoreElement.textContent === 'vs') {
+                    scoreElement.textContent = '1 - 0';
+                } else if (scoreElement) {
+                    const scores = scoreElement.textContent.split(' - ');
+                    const homeScore = parseInt(scores[0]);
+                    const awayScore = parseInt(scores[1]);
+                    
+                    // 70% chance home team scores, 30% away team
+                    if (Math.random() < 0.7) {
+                        scoreElement.textContent = `${homeScore + 1} - ${awayScore}`;
+                    } else {
+                        scoreElement.textContent = `${homeScore} - ${awayScore + 1}`;
+                    }
+                }
+            }
+        }, 10000); // Update every 10 seconds
+    </script>
+</body>
+</html>
