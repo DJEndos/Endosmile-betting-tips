@@ -23,6 +23,22 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
+<!-- Flexbox container for aligning the toasts -->
+<div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center w-100">
+
+  <!-- Then put toasts within -->
+  <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="..." class="rounded me-2" alt="...">
+      <strong class="me-auto">Bootstrap</strong>
+      <small>11 mins ago</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Hello, world! This is a toast message.
+    </div>
+  </div>
+</div>
             <button class="btn d-lg-none" id="sidebarToggle">
                 <i class="fas fa-bars text-white"></i>
             </button>
@@ -191,7 +207,7 @@
                         <div class="col-md-6">
                             <div class="card prediction-card">
                                 <div class="card-header d-flex justify-content-between align-items-center">
-                                    <span>Latvia  • Kuwait - Emir Cup</span>
+                                    <span>Kuwait • Kuwait - Emir Cup</span>
                                     <span class="badge bg-success ">Pending <i class="bi bi-clock-history" ></i></span>
                                 </div>
                                 <div class="card-body">
