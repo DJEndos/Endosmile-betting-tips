@@ -22,7 +22,7 @@
         .navbar-brand {
             color: var(--secondary-color) !important;
             font-weight: 700;
-            font-size: 1.8rem;
+            font-size: 1rem;
         }
         
         .navbar-nav .nav-link {
@@ -195,6 +195,13 @@
                 display: block;
             }
         }
+        /* medium screen */
+        @media (max-width: 360px){
+            .navbar .container{
+              max-width: 360px;  
+            }
+        }
+
         
         /* Custom Tabs */
         .nav-tabs .nav-link {
