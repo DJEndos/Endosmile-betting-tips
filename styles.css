@@ -4,6 +4,7 @@
             --accent-color: #0582CA;
             --light-color: #f8f9fa;
             --dark-color: #212529;
+            --warning-color: yellow;
         }
         
         body {
@@ -36,10 +37,10 @@
             transform: translateY(-2px);
         }
         
-        .navbar-toggler {
+        /* .navbar-toggler {
             border-color: var(--secondary-color);
         }
-        
+         */
         .navbar-toggler-icon {
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 166, 251, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
         }
@@ -224,4 +225,41 @@
         .stats-card .label {
             color: #6c757d;
             font-size: 0.9rem;
+        }
+        .no-games{
+            justify-items: center;
+            text-align: center;
+            margin: auto;
+        }
+        
+        .bi-exclamation-triangle-fill{
+            font-size: 30px;
+        }
+        /* Toast CSS */
+         .toast-enter {
+            animation: toastEnter 0.5s ease-out forwards;
+        }
+        
+        .toast-exit {
+            animation: toastExit 0.5s ease-in forwards;
+        }
+        
+        @keyframes toastEnter {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes toastExit {
+            from { transform: translateY(0); opacity: 1; }
+            to { transform: translateY(-100%); opacity: 0; }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }

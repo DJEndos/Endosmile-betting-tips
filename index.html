@@ -16,29 +16,17 @@
     <script src="/deepseek_javascript_20250519_5ae1d2.js"></script>
     <script src="/deepseek_javascript_20250519_8d801c.js"></script>
     <script src="/deepseek_javascript_20250519_f8a6c9.js"></script>
+    <!-- toast link -->
+      <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 </head>
 
 <body>
     <!-- Navbar -->
+     
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
-<!-- Flexbox container for aligning the toasts -->
-<div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center w-100">
-
-  <!-- Then put toasts within -->
-  <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="toast-header">
-      <img src="..." class="rounded me-2" alt="...">
-      <strong class="me-auto">Bootstrap</strong>
-      <small>11 mins ago</small>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-    <div class="toast-body">
-      Hello, world! This is a toast message.
-    </div>
-  </div>
-</div>
             <button class="btn d-lg-none" id="sidebarToggle">
                 <i class="fas fa-bars text-white"></i>
             </button>
@@ -67,6 +55,30 @@
             </div>
         </div>
     </nav>
+     <!-- Toast Notification -->
+    <div id="appToast" class="hidden fixed top-0 left-0 right-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="toast-enter flex items-center justify-between bg-blue-600 text-white p-4 rounded-b-lg shadow-lg">
+                <div class="flex items-center space-x-3">
+                    <div class="pulse bg-white rounded-full p-2">
+                        <i class="fas fa-mobile-alt text-blue-600 text-xl"></i>
+                    </div>
+                    <div>
+                        <p class="font-bold">Get the best experience!</p>
+                        <p class="text-sm">Download our mobile app for exclusive features.</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="/app-release.apk" download="/app-release.apk"  class="bg-white text-blue-600 hover:bg-blue-50 px-4 py-2 rounded-full font-medium text-sm transition duration-200">
+                    <i class="bi bi-download"></i>    Download Now
+                    </a>
+                    <button id="closeToast" class="text-white hover:text-blue-200 transition duration-200">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Overlay for mobile sidebar -->
     <div class="overlay"></div>
@@ -111,14 +123,15 @@
 
             <!-- Tabs -->
             <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+                     <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
+                        type="button" role="tab">Previous Games</button>
+                </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
                         type="button" role="tab">Today's Tips</button>
                 </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
-                        type="button" role="tab">Live Games</button>
-                </li>
+           
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact"
                         type="button" role="tab">Premium Tips</button>
@@ -132,7 +145,7 @@
                         <div class="col-md-6">
                             <div class="card prediction-card">
                                 <div class="card-header d-flex justify-content-between align-items-center">
-                                    <span>Football • Austrialia - Northern NSW NPL </span>
+                                    <span>  Football • Austrialia - Northern NSW NPL </span>
                                     <span class="badge bg-success">Pending <i class="bi bi-clock-history" ></i></span>
                                 </div>
                                 <div class="card-body">
@@ -207,7 +220,7 @@
                         <div class="col-md-6">
                             <div class="card prediction-card">
                                 <div class="card-header d-flex justify-content-between align-items-center">
-                                    <span>Kuwait • Kuwait - Emir Cup</span>
+                                    <span>Latvia  • Kuwait - Emir Cup</span>
                                     <span class="badge bg-success ">Pending <i class="bi bi-clock-history" ></i></span>
                                 </div>
                                 <div class="card-body">
@@ -352,8 +365,9 @@
                 </div>
 
                 <div class="tab-pane fade" id="profile" role="tabpanel">
-                    <!-- Live Games -->
-                    <div class="row">
+                    <!-- Previous Games -->
+                    <!-- <div class="row">
+                        
                         <div class="col-md-6">
                             <div class="card prediction-card">
                                 <div class="card-header d-flex justify-content-between align-items-center">
@@ -419,6 +433,13 @@
                                 </div>
                             </div>
                         </div>
+                    </div> -->
+                    <div class="no-games">
+                        <div class="warning">
+                                <i class="bi bi-exclamation-triangle-fill"></i>
+                            <h1>OOPS...</h1>
+                            No Previous games yet
+                        </div>
                     </div>
                 </div>
 
@@ -481,7 +502,7 @@
                     <p>Professional betting predictions with high accuracy rates. Join thousands of winning bettors
                         today.</p>
                 </div>
-                <div class="col-md-4 text-center">
+                <div class="col-md-4 ">
                     <h5>Quick Links</h5>
                     <ul class="list-unstyled">
                         <li><a href="#" class="nav-link">Home</a></li>
@@ -490,7 +511,7 @@
                         <li><a href="#" class="nav-link text-white">Contact</a></li>
                     </ul>
                 </div>
-                <div class="col-md-4 text-end">
+                <div class="col-md-4 ">
                     <h5>Connect With Us</h5>
                     <div class="social-icons">
                         <a href="#"><i class="fab fa-facebook"></i></a>
@@ -599,7 +620,58 @@
             }
         }
     </script>
+    <!-- Toast Script -->
     <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            // Check if the user has seen the toast before
+            if (!getCookie('appToastSeen')) {
+                // Show the toast after a small delay
+                setTimeout(() => {
+                    const toast = document.getElementById('appToast');
+                    toast.classList.remove('hidden');
+                    toast.classList.add('toast-enter');
+                    
+                    // Set cookie to remember the user has seen the toast
+                    setCookie('appToastSeen', 'true', 30); // Remember for 30 days
+                }, 1000);
+            }
+            
+            // Close button functionality
+            document.getElementById('closeToast').addEventListener('click', function() {
+                const toast = document.getElementById('appToast');
+                toast.classList.add('toast-exit');
+                
+                // Remove the toast after animation completes
+                setTimeout(() => {
+                    toast.classList.add('hidden');
+                }, 500);
+            });
+            
+            // Cookie functions
+            function setCookie(name, value, days) {
+                const date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                const expires = "expires=" + date.toUTCString();
+                document.cookie = name + "=" + value + ";" + expires + ";path=/";
+            }
+            
+            function getCookie(name) {
+                const cookieName = name + "=";
+                const decodedCookie = decodeURIComponent(document.cookie);
+                const cookieArray = decodedCookie.split(';');
+                
+                for(let i = 0; i < cookieArray.length; i++) {
+                    let cookie = cookieArray[i];
+                    while (cookie.charAt(0) === ' ') {
+                        cookie = cookie.substring(1);
+                    }
+                    if (cookie.indexOf(cookieName) === 0) {
+                        return cookie.substring(cookieName.length, cookie.length);
+                    }
+                }
+                return "";
+            }
+        });
 
     </script>
 </body>
