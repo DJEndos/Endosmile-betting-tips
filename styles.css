@@ -270,11 +270,4 @@
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
-        .bet-slip{
-            margin-bottom: -70%;
-            margin-top: 5rem;
-        }
-        .bet-slip img{
-            background-color: var(--light-color);
-            border-radius: 50%;
-        }
+       
