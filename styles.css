@@ -22,7 +22,7 @@
         .navbar-brand {
             color: var(--secondary-color) !important;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 1.5rem;
         }
         
         .navbar-nav .nav-link {
@@ -269,4 +269,12 @@
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
+        }
+        .bet-slip{
+            margin-bottom: -70%;
+            margin-top: 5rem;
+        }
+        .bet-slip img{
+            background-color: var(--light-color);
+            border-radius: 50%;
         }
