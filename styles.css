@@ -22,7 +22,7 @@
         .navbar-brand {
             color: var(--secondary-color) !important;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 1.5rem;
         }
         
         .navbar-nav .nav-link {
@@ -270,4 +270,23 @@
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
-       
+        .mb-0{
+            color: var(--accent-color);
+            font-weight: 600 !important;
+
+        }
+        .card-header span{
+            font-weight: 600 !important;
+        }
+         hr{
+            margin-top: 8px !important;
+        }
+        .bi-clock-history{
+            font-size: 15px;
+        }
+        .bi-check{
+            font-size: 17px;
+        }
+        .badge{
+            font-size: 15px;
+        }
