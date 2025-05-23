@@ -271,7 +271,7 @@
             100% { transform: scale(1); }
         }
         .mb-0{
-            color: var(--accent-color);
+            color: var(--dark-color);
             font-weight: 600 !important;
 
         }
