@@ -285,8 +285,7 @@
         .tab-pane{
             margin-bottom: -10em;
         }
-        #{
-            background-color: red;
-          margin-top: -5em;
+        #copyright{
+          border-radius: 5px;
            
         }
