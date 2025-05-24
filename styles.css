@@ -17,13 +17,12 @@
             background-color: var(--primary-color) !important;
             padding: 0.8rem 1rem;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            
         }
         
         .navbar-brand {
             color: var(--secondary-color) !important;
             font-weight: 700;
-            font-size: 1.5rem;
+            font-size: 1rem;
         }
         
         .navbar-nav .nav-link {
@@ -152,6 +151,7 @@
         footer {
             background-color: var(--primary-color);
             color: white;
+            font-weight: 400;
             padding: 20px 0;
             margin-top: 30px;
         }
@@ -198,7 +198,11 @@
             }
         }
         /* medium screen */
-        
+        @media (max-width: 360px){
+            .navbar .container{
+              max-width: 360px;  
+            }
+        }
 
         
         /* Custom Tabs */
@@ -220,6 +224,13 @@
             padding: 20px;
             border-radius: 10px;
         }
+        #stats{
+            margin-top: -20em !important;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+        }
+         
         
         .stats-card .value {
             font-size: 2rem;
@@ -283,10 +294,7 @@
         .badge{
             font-size: 15px;
         }
-        .tab-pane{
-            margin-bottom: -10em;
-        }
-        #copyright{
-          border-radius: 5px;
-           
+        #home{
+            height: 100vh;
+            margin-bottom: -400px !important;
         }
