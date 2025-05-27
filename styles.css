@@ -172,6 +172,7 @@
         @media (max-width: 992px) {
             .sidebar {
                 transform: translateX(-100%);
+                
             }
             
             .sidebar.active {
@@ -196,11 +197,56 @@
             .overlay.active {
                 display: block;
             }
+      
         }
         /* medium screen */
-        @media (max-width: 360px){
-            .navbar .container{
-              max-width: 360px;  
+        @media (max-width: 768px){
+            .navbar .container-fluid{ 
+              justify-content: space-between !important;
+            }
+            .banner{
+               background-image: url(/file_0000000072786246903370bee3df058b.png);
+            background-size: contain !;
+            background-repeat: no-repeat;
+            flex-direction: column;
+            height: 100vh;
+            width: 100% !important;
+            }
+            .banner-text h1{
+                margin: auto;
+                text-align: center;
+                color: var(--light-color);
+                font-weight: 800;
+                font-size: 50px;
+                position: absolute;
+                top: 80%;
+                
+            }
+            #sidebarToggle
+            {
+                margin-left: -20px;
+
+            }
+             .navbar-toggler-icon{
+                display: none;
+            }
+            .navbar-toggler{
+                display: none;
+            }
+            .nav-tabs .nav-link{
+                color: #dc3545;
+                background-color: #00A6FB;
+                margin-top: -20px;
+                border-radius: 10px;
+                color: #eee;
+                margin-right: 10px;
+            }
+
+        }
+        @media  (min-width: 992px) {
+                .banner-text{
+                display: none;
+                text-align: center;
             }
         }
 
@@ -210,6 +256,8 @@
             color: var(--dark-color);
             border: none;
             padding: 10px 20px;
+            font-weight: 500;
+
         }
         
         .nav-tabs .nav-link.active {
@@ -297,4 +345,16 @@
         #home{
             height: 100vh;
             margin-bottom: -400px !important;
+            display: none;
+        }
+        #previous{
+            display: none;
+        }
+        .banner{
+            background-image: url(/file_0000000072786246903370bee3df058b.png);
+            background-size: cover ;
+            background-repeat: no-repeat;
+            height: 100vh;
+            width: 100%;
+            position: relative;
         }
