@@ -261,6 +261,10 @@
             border: none;
             padding: 10px 20px;
             font-weight: 500;
+            margin: auto;
+            justify-content: centre;
+            align-items: centre;
+
 
         }
         
