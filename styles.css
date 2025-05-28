@@ -145,6 +145,7 @@
             align-items: center;
             justify-content: center;
             font-weight: bold;
+            display: none;
         }
         
         /* Footer Styles */
@@ -153,7 +154,7 @@
             color: white;
             font-weight: 400;
             padding: 20px 0;
-            margin-top: 30px;
+            margin-top: 30rem;
         }
         
         .social-icons a {
@@ -204,15 +205,15 @@
             .navbar .container-fluid{ 
               justify-content: space-between !important;
             }
-            .banner{
+            /* .banner{
                background-image: url(/file_0000000072786246903370bee3df058b.png);
             background-size: contain !;
             background-repeat: no-repeat;
             flex-direction: column;
             height: 100vh;
             width: 100% !important;
-            }
-            .banner-text h1{
+            } */
+            /* .banner-text h1{
                 margin: auto;
                 text-align: center;
                 color: var(--light-color);
@@ -221,7 +222,7 @@
                 position: absolute;
                 top: 80%;
                 
-            }
+            } */
             #sidebarToggle
             {
                 margin-left: -20px;
@@ -236,10 +237,13 @@
             .nav-tabs .nav-link{
                 color: #dc3545;
                 background-color: #00A6FB;
-                
+                /* margin-top: -20px; */
                 border-radius: 10px;
                 color: #eee;
                 margin-right: 10px;
+                column-gap: 10px;
+                margin: auto;
+                justify-content: center;
             }
 
         }
@@ -342,19 +346,21 @@
         .badge{
             font-size: 15px;
         }
-        #home{
+        /* #home{
             height: 100vh;
             margin-bottom: -400px !important;
             display: none;
-        }
+        } */
         #previous{
             display: none;
         }
-        .banner{
+        
+        /* .banner{
             background-image: url(/file_0000000072786246903370bee3df058b.png);
             background-size: cover ;
             background-repeat: no-repeat;
             height: 100vh;
             width: 100%;
             position: relative;
-        }
+            display: none;
+        } */
